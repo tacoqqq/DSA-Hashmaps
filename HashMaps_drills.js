@@ -145,6 +145,25 @@ function grouping(list){
   }
 
 
+
+  function grouping(list){
+    let answer = []
+    let hash = new HashMap()
+    for (let i = 0 ; i < list.length ; i++){
+      let key = list[i].split('').sort().join('')
+  
+      try {
+        answer[hash.get(key)].push(list[i])
+      }
+      catch (err){
+        hash.set(key,i)
+        answer[i] = [list[i]] //[[],[]]
+      }
+    }
+  
+    return answer
+  }
+
 /*
 7. Separate Chaining
 Write another hash map implementation as above, but use separate chaining as the collision resolution mechanism.
